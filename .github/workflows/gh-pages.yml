@@ -24,8 +24,8 @@ jobs:
       run: dotnet publish Bin2Dec.csproj -c:Release -p:GHPages=true -o release --nologo
     
     # changes the base-tag in index.html from '/' to 'bin2dec' to match GitHub Pages repository subdirectory
-    - name: Change base-tag in index.html from / to bin2dec
-      run: sed -i 's/<base href="\/" \/>/<base href="\/bin2dec\/" \/>/g' release/wwwroot/index.html
+    #- name: Change base-tag in index.html from / to bin2dec
+    #  run: sed -i 's/<base href="\/" \/>/<base href="\/bin2dec\/" \/>/g' release/wwwroot/index.html
     
     # copy index.html to 404.html to serve the same file when a file is not found
     - name: copy index.html to 404.html

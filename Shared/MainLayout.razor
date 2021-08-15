@@ -1,0 +1,26 @@
+@inherits LayoutComponentBase
+
+
+<MudThemeProvider Theme="Custom" />
+<MudDialogProvider />
+<MudSnackbarProvider />
+
+<MudLayout>
+    <MudAppBar Elevation="2">
+        <MudText Typo="Typo.h5" Align="Align.Center" Class="mx-auto">Bin2Dec</MudText>
+    </MudAppBar>
+    <MudMainContent>
+        @Body
+    </MudMainContent>
+</MudLayout>
+
+@code {
+    MudTheme Custom = new MudTheme()
+    {
+        Palette = new Palette()
+        {
+            Primary = "#2c5288",
+            AppbarBackground = "#2c5288"
+        }
+    };
+}

@@ -1,0 +1,38 @@
+﻿@page "/"
+
+<MudContainer Class="mt-16 px-8" MaxWidth="MaxWidth.Medium">
+    <MudGrid>
+        <MudItem xs="6">
+            <MudTextField T="string" Label="Binary Input" Variant="Variant.Outlined" @bind-Value="InputValue" />
+        </MudItem>
+        <MudItem xs="6">
+            <MudTextField T="string" Label="Result" Disabled="true" Variant="Variant.Outlined"
+                @bind-Value="ConvertedValue" />
+        </MudItem>
+        <MudItem xs="12">
+            <MudButton Variant="Variant.Filled" Color="Color.Primary" @onclick="ConvertToDecimal">Convert</MudButton>
+        </MudItem>
+    </MudGrid>
+</MudContainer>
+
+@code {
+    public string InputValue { get; set; }
+    public string ConvertedValue { get; set; }
+
+    public bool IsBinary(string inputValue)
+    {
+        var pattern = new Regex(@"^[01]+$");
+        if (!string.IsNullOrWhiteSpace(inputValue))
+            return pattern.IsMatch(inputValue);
+        return false;
+    }
+
+    public void ConvertToDecimal()
+    {
+        if (IsBinary(InputValue) == true)
+        {
+            ConvertedValue = Convert.ToInt32(InputValue, 2).ToString();
+            InputValue = null;
+        }
+    }
+}
